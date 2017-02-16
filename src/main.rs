@@ -8,12 +8,11 @@ mod nodes;
 use std::io::{self, Read};
 use std::str;
 use regex::Regex;
-use nodes::number;
 use nodes::node;
+use nodes::number;
+use nodes::list;
 
 fn main() {
-    println!("Hello, world!");
-
     // They say parser is just a state-machine.
     let mut buffer = [0; 1];
     while let Ok(bytes_read) = io::stdin().read(&mut buffer) {
@@ -38,16 +37,27 @@ fn main() {
 // or we stay at ASCII-only situation.
 fn parse(bs: &[u8]) -> Result<(), io::Error> {
     let str_ch = str::from_utf8(bs).unwrap();
-    let num_re = Regex::new(r"\d{1}").unwrap();
-    if num_re.is_match(&str_ch) {
-        print!(">>>>>>>> matched");
-        number::Number {
+    if Regex::new(r"\d{1}").unwrap().is_match(&str_ch) {
+        print!(">>> Number");
+        let node = number::Number {
             node: node::Node {
                 text: str_ch.to_string()
             }
-        }
-    } else {
-        print!(">>>>>>>> NOT matched");
+        };
+    } else if Regex::new(r"\({1}").unwrap().is_match(&str_ch){
+        print!(">>> ListBegin");
+        let node = list::ListBegin {
+            node: node::Node {
+                text: str_ch.to_string()
+            }
+        };
+    } else if Regex::new(r"\){1}").unwrap().is_match(&str_ch){
+        print!(">>> ListEnd");
+        let node = list::ListEnd {
+            node: node::Node {
+                text: str_ch.to_string()
+            }
+        };
     }
     Ok(())      // TODO
 }

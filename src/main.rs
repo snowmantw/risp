@@ -4,7 +4,6 @@ extern crate regex;
 // Crate is for separated compilation.
 mod nodes;
 
-
 use std::io::{self, Read};
 use std::str;
 use regex::Regex;
@@ -59,6 +58,9 @@ fn parse(bs: &[u8]) -> Result<(), io::Error> {
             }
         };
     }
+
+    // TODO: to have a state-transferring mechanism here.
+    // TODO: and the transferring method need to accept a trait.
     Ok(())      // TODO
 }
 

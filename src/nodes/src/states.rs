@@ -24,6 +24,13 @@ use node::Node;
 //
 // http://www.ncameron.org/blog/abstract-return-types-aka-%60impl-trait%60/
 //
+// Doc mentions it here:
+//
+// https://doc.rust-lang.org/book/trait-objects.html
+//
+// Not directly, but in the "Dynamic dispatch" chapter, the "either &Foo or Box<Foo>"
+// statement describes the same issue here.
+//
 pub trait State {
     fn transfer(&self, node: State) -> State;
     fn extract(&self) -> Node;      // TODO: a ref? a copy-instance?

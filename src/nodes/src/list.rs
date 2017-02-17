@@ -7,6 +7,10 @@ pub struct ListBegin {
 }
 
 impl State for ListBegin {
+    fn transfer(&self, node: State) -> State {
+        return node;
+    }
+
     fn extract(&self) -> Node {
         return self.node;
     }
@@ -17,6 +21,10 @@ pub struct ListEnd {
 }
 
 impl State for ListEnd {
+    fn transfer(&self, node: State) -> State {
+        return node;
+    }
+
     fn extract(&self) -> Node {
         return self.node;
     }

@@ -8,6 +8,7 @@
 //
 // The latest List get created because the chain successfully reach ListEnd. 
 //
+
 pub trait State {
     fn transfer(&self, node: State) -> State;
     fn extract(&self) -> Node;      // TODO: a ref? a copy-instance?

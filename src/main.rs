@@ -1,8 +1,11 @@
 extern crate regex;
 
-// Internal modules don't need to be a crate
-// Crate is for separated compilation.
-mod nodes;
+// Need to make nodes as a crate so main.rs can use it w/o coupling
+// it with the nodes module.
+//
+// And one annoying thing is the 'lib.rs' of 'nodes' crate,
+// seems need to be specified in Cargo.toml.
+extern crate nodes;
 
 use std::io::{self, Read};
 use std::str;

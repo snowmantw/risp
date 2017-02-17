@@ -5,3 +5,4 @@ authors = ["Greg Weng<snowmantw@gmail.com>"]
 
 [dependencies]
 regex = "0.2"
+nodes = { path = "src/nodes" }

@@ -1,4 +1,4 @@
-use nodes::node::Node;
+use node::Node;
 
 pub struct Number {
     pub node: Node

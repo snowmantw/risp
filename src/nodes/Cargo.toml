@@ -1,0 +1,6 @@
+[package]
+name = "nodes"
+version = "0.1.0"
+authors = ["Weng, ChengHui | Greg | TRVDD <chenghui.weng@rakuten.com>"]
+
+[dependencies]

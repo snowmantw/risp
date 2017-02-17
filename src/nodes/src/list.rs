@@ -1,6 +1,5 @@
-mod states;
 
-use nodes::node::Node;
+use node::Node;
 use states::State;
 
 pub struct ListBegin {
